@@ -68,6 +68,10 @@ final class APIndexBarElementView: UIView {
         imageView.contentMode = .center
         imageView.tintColor = tintColor
         imageView.center(in: self)
+        
+        #if os(tvOS)
+            imageView.adjustsImageWhenAncestorFocused = true
+        #endif
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -185,6 +185,9 @@ public class APSlidableTabPageController: UIViewController, UIScrollViewDelegate
         indexBarElements = createIndexBarElements()
         indexBarContainerView.addViewsHorizontally(indexBarElements)
         
+        //Make sure the indicator is not hidden behind the index bar elements
+        indexBarContainerView.bringSubview(toFront: indexIndicatorView)
+        
         NSLayoutConstraint.activate(
             indexBarElements.map { element -> NSLayoutConstraint in
                 element.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: indexBarElementWidthMultiplier())
