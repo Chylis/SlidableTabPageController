@@ -1,33 +1,33 @@
 //
 //  AppDelegate.swift
-//  APSlidableTabPageControllerDemo
+//  APSlidableTabPageControllerDemo_tvOS
 //
-//  Created by Magnus Eriksson on 21/01/16.
-//  Copyright © 2016 Apegroup. All rights reserved.
+//  Created by Magnus Eriksson on 2017-03-15.
+//  Copyright © 2017 Magnus Eriksson. All rights reserved.
 //
 
-import APSlidableTabPageController
+import UIKit
+import APSlidableTabPageController_tvOS
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         let tabPageCtrl = APSlidableTabPageControllerFactory.make(childViewControllers: createViewControllers(count: 7))
-//        tabPageCtrl.indexBarPosition = .bottom
-//        tabPageCtrl.indexBarHeightConstraint.constant = 49
+        
         tabPageCtrl.maxNumberOfIndexBarElementsPerScreen = 4.5
+        tabPageCtrl.indexBarHeightConstraint.constant = 49
         tabPageCtrl.indexBarElementColor = UIColor.black
         tabPageCtrl.indexBarElementHighlightedColor = tabPageCtrl.indexIndicatorView.backgroundColor!
-        
         
         window = UIWindow()
         window?.rootViewController = tabPageCtrl
         window?.makeKeyAndVisible()
         return true
     }
-    
     
     private func createViewControllers(count: Int) -> [UIViewController] {
         return (0..<count).map { i -> UIViewController in
@@ -45,9 +45,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             } else if i == 4 {
                 vc.title = "a veeeery long (truncated) title"
             }
-            else if i == 6 {
-                vc.title = "last tab"
-            }
             return vc
         }
     }
@@ -55,4 +52,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func randomColor() -> UIColor {
         return UIColor(red: CGFloat(drand48()), green: CGFloat(drand48()), blue: CGFloat(drand48()), alpha: 1)
     }
+
 }
+
