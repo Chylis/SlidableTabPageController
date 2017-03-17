@@ -11,7 +11,6 @@ import UIKit
 extension UIView {
     
     func addViewsHorizontally(_ views: [UIView]) {
-        
         var prevView: UIView?
         for view in views {
             view.translatesAutoresizingMaskIntoConstraints = false
@@ -33,6 +32,15 @@ extension UIView {
         
         //Last view - pin to container view's trailing anchor
         prevView?.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+    }
+    
+    func center(in parentView: UIView) {
+        parentView.addSubview(self)
+        translatesAutoresizingMaskIntoConstraints = false
+        leadingAnchor.constraint(equalTo: parentView.leadingAnchor).isActive = true
+        trailingAnchor.constraint(equalTo: parentView.trailingAnchor).isActive = true
+        topAnchor.constraint(equalTo: parentView.topAnchor).isActive = true
+        bottomAnchor.constraint(equalTo: parentView.bottomAnchor).isActive = true
     }
     
     func reportAmbiguity () {

@@ -17,6 +17,8 @@
 		5F4D24C31E798C7800246989 /* APSlidableTabPageController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F4D24B01E798BD300246989 /* APSlidableTabPageController.h */; };
 		5F4D24C61E798D9000246989 /* APSlidableTabPageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F4D24C51E798D9000246989 /* APSlidableTabPageController.xib */; };
 		5F4D24C91E798DC200246989 /* APSlidableTabPageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F4D24C81E798DC200246989 /* APSlidableTabPageController.xib */; };
+		5F7770831E7BD1F0009A973B /* APIndexBarElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7770821E7BD1F0009A973B /* APIndexBarElementView.swift */; };
+		5F7770841E7BD1F0009A973B /* APIndexBarElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7770821E7BD1F0009A973B /* APIndexBarElementView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,7 @@
 		5F4D24B71E798BD300246989 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F4D24C51E798D9000246989 /* APSlidableTabPageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APSlidableTabPageController.xib; sourceTree = "<group>"; };
 		5F4D24C81E798DC200246989 /* APSlidableTabPageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APSlidableTabPageController.xib; sourceTree = "<group>"; };
+		5F7770821E7BD1F0009A973B /* APIndexBarElementView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIndexBarElementView.swift; sourceTree = "<group>"; };
 		5FA8E4F71C50F41400DCE0E5 /* APSlidableTabPageController_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = APSlidableTabPageController_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -53,9 +56,10 @@
 			isa = PBXGroup;
 			children = (
 				5F4D24B01E798BD300246989 /* APSlidableTabPageController.h */,
+				5F4D24B71E798BD300246989 /* Info.plist */,
 				5F4D24B11E798BD300246989 /* Controllers */,
 				5F4D24B41E798BD300246989 /* Extensions */,
-				5F4D24B71E798BD300246989 /* Info.plist */,
+				5F7770811E7BD1CE009A973B /* Views */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -91,6 +95,14 @@
 				5F4D24C81E798DC200246989 /* APSlidableTabPageController.xib */,
 			);
 			path = tvOS;
+			sourceTree = "<group>";
+		};
+		5F7770811E7BD1CE009A973B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5F7770821E7BD1F0009A973B /* APIndexBarElementView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		5FA8E4ED1C50F41400DCE0E5 = {
@@ -235,6 +247,7 @@
 				5F4D24BE1E798C6100246989 /* APSlidableTabPageController.swift in Sources */,
 				5F4D24C01E798C6800246989 /* UIScrollView+Utils.swift in Sources */,
 				5F4D24C11E798C6B00246989 /* UIView+LayoutUtils.swift in Sources */,
+				5F7770841E7BD1F0009A973B /* APIndexBarElementView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,6 +257,7 @@
 			files = (
 				5F4D24B91E798BD300246989 /* APSlidableTabPageController.swift in Sources */,
 				5F4D24BB1E798BD300246989 /* UIScrollView+Utils.swift in Sources */,
+				5F7770831E7BD1F0009A973B /* APIndexBarElementView.swift in Sources */,
 				5F4D24BC1E798BD300246989 /* UIView+LayoutUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

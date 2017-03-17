@@ -2,7 +2,7 @@
 
 ## Description:
 - A slidable tab page controller written in Swift
-- Supports both Portrait and Landscape
+- Supports iOS (Portrait + Landscape) and tvOS
 - Configurable:
   - index bar position (top or bottom)
   - index bar height
@@ -16,53 +16,62 @@
 - Fetch with Carthage, e.g:
 - 'github "apegroup/apegroup-slidabletabpagecontroller-ios"'
 
-## Usage example:
+## Usage example iOS:
 ```swift
-import APSlidableTabPageController
+import APSlidableTabPageController_iOS
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-      let tabPageCtrl = APSlidableTabPageControllerFactory.make(childViewControllers: createViewControllers(count: 7))
-      tabPageCtrl.indexBarPosition = .bottom
-      tabPageCtrl.maxNumberOfIndexBarElementsPerScreen = 4.5
-      tabPageCtrl.indexBarHeightConstraint.constant = 49
-      tabPageCtrl.indexBarElementColor = UIColor.black
-      tabPageCtrl.indexBarElementHighlightedColor = tabPageCtrl.indexIndicatorView.backgroundColor!
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    let tabPageCtrl = APSlidableTabPageControllerFactory.make(pages: createPages(count: 7))
+    tabPageCtrl.maxNumberOfIndexBarElementsPerScreen = 4.5
+    tabPageCtrl.indexBarHeightConstraint.constant = 49
+    tabPageCtrl.indexBarElementColor = .black
+    tabPageCtrl.indexIndicatorView.backgroundColor = .red
+    tabPageCtrl.indexBarElementHighlightedColor = tabPageCtrl.indexIndicatorView.backgroundColor!
+    tabPageCtrl.delegate = self
 
-      window = UIWindow()
-      window?.rootViewController = tabPageCtrl
-      window?.makeKeyAndVisible()
-      return true
-    }
-
-  private func createViewControllers(count: Int) -> [UIViewController] {
-    return (0..<count).map { i -> UIViewController in
-      let vc = UIViewController()
-      vc.title = "\(i)"
-      vc.view.backgroundColor = randomColor()
-
-      if i == 0 {
-        vc.tabBarItem.image = UIImage(named: "icon-star")?.withRenderingMode(.alwaysTemplate)
-        vc.tabBarItem.selectedImage = UIImage(named: "icon-plane")?.withRenderingMode(.alwaysTemplate)
-      } else if i == 1 {
-          vc.title = "hello there"
-      } else if i == 2 {
-          vc.tabBarItem.image = UIImage(named: "icon-star")
-      } else if i == 4 {
-          vc.title = "a veeeery long (truncated) title"
-      }
-      return vc
-    }
-  }
-
-  private func randomColor() -> UIColor {
-    return UIColor(red: CGFloat(drand48()), green: CGFloat(drand48()), blue: CGFloat(drand48()), alpha: 1)
-  }
+    window = UIWindow()
+    window?.rootViewController = tabPageCtrl
+    window?.makeKeyAndVisible()
+    return true
 }
-  ```
+
+private func createPages(count: Int) -> [APSlidableTabPageControllerPage] {
+    return (0..<count).map { i -> APSlidableTabPageControllerPage in
+        let vc = UIViewController()
+        vc.view.backgroundColor = randomColor()
+        vc.title = "\(i)"
+
+        let page: APSlidableTabPageControllerPage
+        if i == 0 {
+            let indexBarElement = APIndexBarElement.image(UIImage(named: "icon-star")!, UIImage(named: "iconplane")!)
+            page = APSlidableTabPageControllerPage(indexBarElement: indexBarElement, contentViewController: vc)
+        } else if i == 1 {
+            let indexBarElement = APIndexBarElement.title("hello there")
+            page = APSlidableTabPageControllerPage(indexBarElement: indexBarElement, contentViewController :vc)
+        } else {
+            page = APSlidableTabPageControllerPage(contentViewController: vc)        
+        }
+
+        return page
+    }
+}
+
+private func randomColor() -> UIColor {
+    return UIColor(red: CGFloat(drand48()), green: CGFloat(drand48()), blue: CGFloat(drand48()), alpha: 1)
+}
+}
+
+extension AppDelegate: APSlidableTabPageControllerDelegate {
+    func slidableTabPageController(_ slidableTabPageController: APSlidableTabPageController, didNavigateFrom oldPage: Int, to newPage: Int) {
+        print("Page changed from '\(oldPage)' to  \(newPage)")
+    }
+}
+
+```
 
 ## Restrictions:
 - Must be instantiated from a NIB

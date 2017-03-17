@@ -11,16 +11,44 @@ import UIKit
 //TODO: Think about the transition methods of the child view controllers.
 //TODO: Make UI configurable. Make use of UIAppearance?
 
+
+///Model of an index bar element of one page
+public enum APIndexBarElement {
+    case title(String)
+    case image(UIImage, UIImage)
+}
+
+///Model of one page, consisting of an index bar element and a content view controller
+public struct APSlidableTabPageControllerPage {
+    public let indexBarElement: APIndexBarElement
+    public let contentViewController: UIViewController
+    
+    public init(indexBarElement: APIndexBarElement, contentViewController: UIViewController) {
+        self.indexBarElement = indexBarElement
+        self.contentViewController = contentViewController
+    }
+    
+    public init(contentViewController: UIViewController) {
+        let indexBarElement: APIndexBarElement
+        if let image = contentViewController.tabBarItem.image,
+            let selectedImage = contentViewController.tabBarItem.selectedImage {
+            indexBarElement = APIndexBarElement.image(image, selectedImage)
+        } else {
+            indexBarElement = APIndexBarElement.title(contentViewController.title ?? "")
+        }
+        self.init(indexBarElement: indexBarElement, contentViewController: contentViewController)
+    }
+}
+
+
 public struct APSlidableTabPageControllerFactory {
     
-    static public func make(childViewControllers: [UIViewController]) -> APSlidableTabPageController {
-        
+    static public func make(pages: [APSlidableTabPageControllerPage]) -> APSlidableTabPageController {
         let nib = UINib(nibName: String(describing: APSlidableTabPageController.self),
                         bundle: Bundle(for: APSlidableTabPageController.self))
             .instantiate(withOwner: nil, options: nil)
-        
         let vc = nib.first as! APSlidableTabPageController
-        vc.viewControllers = childViewControllers
+        vc.pages = pages
         return vc
     }
 }
@@ -56,7 +84,7 @@ public class APSlidableTabPageController: UIViewController, UIScrollViewDelegate
     
     public weak var delegate: APSlidableTabPageControllerDelegate?
 
-    internal var indexBarElements: [UIView] = []
+    internal var indexBarElements: [APIndexBarElementView] = []
     
     //Decides whether the indexBar should scroll to follow the index indicator view.
     private var indexBarShouldTrackIndicatorView = true
@@ -74,7 +102,7 @@ public class APSlidableTabPageController: UIViewController, UIScrollViewDelegate
             delegate.slidableTabPageController(self, didNavigateFrom: oldValue, to: currentPageIndex)
         }
     }
-    public var viewControllers: [UIViewController] = [] {
+    public var pages: [APSlidableTabPageControllerPage] = [] {
         willSet {
             removeContentView()
         }
@@ -111,27 +139,12 @@ public class APSlidableTabPageController: UIViewController, UIScrollViewDelegate
     }
     
     public var indexBarElementColor = UIColor.black {
-        didSet {
-            indexBarElements.forEach { element in
-                element.tintColor = indexBarElementColor
-                if let label = element as? UILabel {
-                    label.textColor = indexBarElementColor
-                }
-            }
-        }
+        didSet { indexBarElements.forEach { $0.defaultColor = indexBarElementColor } }
     }
     
     public var indexBarElementHighlightedColor = UIColor.red {
-        didSet {
-            indexBarElements.forEach { element in
-                if let label = element as? UILabel {
-                    label.highlightedTextColor = indexBarElementHighlightedColor
-                }
-            }
-        }
+        didSet { indexBarElements.forEach { $0.highlightedColor = indexBarElementHighlightedColor } }
     }
-    
-    
     
     //MARK: Rotation related events
     
@@ -164,7 +177,7 @@ public class APSlidableTabPageController: UIViewController, UIScrollViewDelegate
     //MARK: Setup
     
     private func setupIndexBar() {
-        guard viewControllers.count > 0 else {
+        guard pages.count > 0 else {
             return
         }
         
@@ -197,22 +210,18 @@ public class APSlidableTabPageController: UIViewController, UIScrollViewDelegate
      Else the view controller's title will be used.
  
      */
-    private func createIndexBarElements() -> [UIView] {
-        return viewControllers.map { vc in
-            if let image = vc.tabBarItem.image {
-                let imageView = UIImageView(image: image, highlightedImage: vc.tabBarItem.selectedImage)
-                imageView.contentMode = .center
-                imageView.translatesAutoresizingMaskIntoConstraints = false
-                imageView.tintColor = indexBarElementColor
-                return imageView
-            } else {
-                let label = UILabel()
-                label.textAlignment = .center
-                label.translatesAutoresizingMaskIntoConstraints = false
-                label.text = vc.title
-                label.textColor = indexBarElementColor
-                label.highlightedTextColor = indexBarElementHighlightedColor
-                return label
+    private func createIndexBarElements() -> [APIndexBarElementView] {
+        return pages.map { page in
+            switch page.indexBarElement {
+            case .title(let title):
+                return APIndexBarElementView(title: title,
+                                             color: indexBarElementColor,
+                                             highlightedColor: indexBarElementHighlightedColor)
+            
+            case let .image(defaultImage, highlightedImage):
+                return APIndexBarElementView(image: defaultImage,
+                                             highlightedImage: highlightedImage,
+                                             tintColor: indexBarElementColor)
             }
         }
     }
@@ -222,7 +231,7 @@ public class APSlidableTabPageController: UIViewController, UIScrollViewDelegate
     }
     
     private func indexBarElementWidthMultiplier() -> CGFloat {
-        let numberOfElements = Double(viewControllers.count > 0 ? viewControllers.count : 1)
+        let numberOfElements = Double(pages.count > 0 ? pages.count : 1)
         let multiplier = numberOfElements > maxNumberOfIndexBarElementsPerScreen ?
             CGFloat(1) / CGFloat(maxNumberOfIndexBarElementsPerScreen) :
             CGFloat(1) / CGFloat(numberOfElements)
@@ -231,10 +240,10 @@ public class APSlidableTabPageController: UIViewController, UIScrollViewDelegate
     
     
     private func setupContentView() {
-        let vcViews = viewControllers.map { vc -> UIView in
-            addChildViewController(vc)
-            vc.didMove(toParentViewController: self)
-            return vc.view
+        let vcViews = pages.map { page -> UIView in
+            addChildViewController(page.contentViewController)
+            page.contentViewController.didMove(toParentViewController: self)
+            return page.contentViewController.view
         }
         
         contentContainerView.addViewsHorizontally(vcViews)
@@ -248,10 +257,10 @@ public class APSlidableTabPageController: UIViewController, UIScrollViewDelegate
     }
     
     private func removeContentView() {
-        viewControllers.forEach { vc in
-            vc.willMove(toParentViewController: nil)
-            vc.view.removeFromSuperview()
-            vc.removeFromParentViewController()
+        pages.forEach { page in
+            page.contentViewController.willMove(toParentViewController: nil)
+            page.contentViewController.view.removeFromSuperview()
+            page.contentViewController.removeFromParentViewController()
         }
     }
     
@@ -375,15 +384,8 @@ public class APSlidableTabPageController: UIViewController, UIScrollViewDelegate
     private func highlightIndexBarElement(at x: CGFloat) {
         let indexOfElementAtXPosition = Int(x / indexBarElementWidth())
 
-        for (index, view) in indexBarElements.enumerated() {
-            let isHighlighted = index == indexOfElementAtXPosition
-            
-            if let imageView = view as? UIImageView {
-                imageView.isHighlighted = isHighlighted
-                imageView.tintColor = isHighlighted ? indexBarElementHighlightedColor : indexBarElementColor
-            } else if let label = view as? UILabel {
-                label.isHighlighted = isHighlighted
-            }
+        for (index, page) in indexBarElements.enumerated() {
+            page.isHighlighted = index == indexOfElementAtXPosition
         }
     }
     
