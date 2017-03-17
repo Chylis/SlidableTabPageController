@@ -24,7 +24,7 @@ import APSlidableTabPageController_iOS
 class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
 
-func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     let tabPageCtrl = APSlidableTabPageControllerFactory.make(pages: createPages(count: 7))
     tabPageCtrl.maxNumberOfIndexBarElementsPerScreen = 4.5
     tabPageCtrl.indexBarHeightConstraint.constant = 49
@@ -37,38 +37,34 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
     window?.rootViewController = tabPageCtrl
     window?.makeKeyAndVisible()
     return true
-}
+  }
 
-private func createPages(count: Int) -> [APSlidableTabPageControllerPage] {
+  private func createPages(count: Int) -> [APSlidableTabPageControllerPage] {
     return (0..<count).map { i -> APSlidableTabPageControllerPage in
-        let vc = UIViewController()
-        vc.view.backgroundColor = randomColor()
+      let vc = UIViewController()
+        vc.view.backgroundColor = UIColor(red: CGFloat(drand48()), green: CGFloat(drand48()), blue: CGFloat(drand48()), alpha: 1)
         vc.title = "\(i)"
 
         let page: APSlidableTabPageControllerPage
         if i == 0 {
-            let indexBarElement = APIndexBarElement.image(UIImage(named: "icon-star")!, UIImage(named: "iconplane")!)
+          let indexBarElement = APIndexBarElement.image(UIImage(named: "icon-star")!, UIImage(named: "iconplane")!)
             page = APSlidableTabPageControllerPage(indexBarElement: indexBarElement, contentViewController: vc)
         } else if i == 1 {
-            let indexBarElement = APIndexBarElement.title("hello there")
+          let indexBarElement = APIndexBarElement.title("hello there")
             page = APSlidableTabPageControllerPage(indexBarElement: indexBarElement, contentViewController :vc)
         } else {
-            page = APSlidableTabPageControllerPage(contentViewController: vc)        
+          page = APSlidableTabPageControllerPage(contentViewController: vc)        
         }
 
-        return page
+      return page
     }
-}
-
-private func randomColor() -> UIColor {
-    return UIColor(red: CGFloat(drand48()), green: CGFloat(drand48()), blue: CGFloat(drand48()), alpha: 1)
-}
+  }
 }
 
 extension AppDelegate: APSlidableTabPageControllerDelegate {
-    func slidableTabPageController(_ slidableTabPageController: APSlidableTabPageController, didNavigateFrom oldPage: Int, to newPage: Int) {
-        print("Page changed from '\(oldPage)' to  \(newPage)")
-    }
+  func slidableTabPageController(_ slidableTabPageController: APSlidableTabPageController, didNavigateFrom oldPage: Int, to newPage: Int) {
+    print("Page changed from '\(oldPage)' to  \(newPage)")
+  }
 }
 
 ```
