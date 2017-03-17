@@ -6,25 +6,69 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		5FCB2D891E7C3A9E00190E06 /* APSlidableTabPageControllerFramework_tvOS */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 5FCB2D8C1E7C3A9E00190E06 /* Build configuration list for PBXAggregateTarget "APSlidableTabPageControllerFramework_tvOS" */;
+			buildPhases = (
+				5FCB2D8F1E7C3ADE00190E06 /* Build fat framework */,
+			);
+			dependencies = (
+				5FCB2D8E1E7C3AAD00190E06 /* PBXTargetDependency */,
+			);
+			name = APSlidableTabPageControllerFramework_tvOS;
+			productName = tvOS_Framework;
+		};
+		5FCB2D901E7C3E9000190E06 /* APSlidableTabPageControllerFramework_iOS */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 5FCB2D911E7C3E9000190E06 /* Build configuration list for PBXAggregateTarget "APSlidableTabPageControllerFramework_iOS" */;
+			buildPhases = (
+				5FCB2D971E7C3EB400190E06 /* Build fat framework */,
+			);
+			dependencies = (
+				5FCB2D951E7C3E9400190E06 /* PBXTargetDependency */,
+			);
+			name = APSlidableTabPageControllerFramework_iOS;
+			productName = APSlidableTabPageControllerFramework_iOS;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		5F378C7B1E79A429008CCE51 /* APSlidableTabPageController+tvOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F378C7A1E79A429008CCE51 /* APSlidableTabPageController+tvOS.swift */; };
-		5F4D24B81E798BD300246989 /* APSlidableTabPageController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F4D24B01E798BD300246989 /* APSlidableTabPageController.h */; };
+		5F4D24B81E798BD300246989 /* APSlidableTabPageController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F4D24B01E798BD300246989 /* APSlidableTabPageController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5F4D24B91E798BD300246989 /* APSlidableTabPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4D24B21E798BD300246989 /* APSlidableTabPageController.swift */; };
 		5F4D24BB1E798BD300246989 /* UIScrollView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4D24B51E798BD300246989 /* UIScrollView+Utils.swift */; };
 		5F4D24BC1E798BD300246989 /* UIView+LayoutUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4D24B61E798BD300246989 /* UIView+LayoutUtils.swift */; };
 		5F4D24BE1E798C6100246989 /* APSlidableTabPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4D24B21E798BD300246989 /* APSlidableTabPageController.swift */; };
 		5F4D24C01E798C6800246989 /* UIScrollView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4D24B51E798BD300246989 /* UIScrollView+Utils.swift */; };
 		5F4D24C11E798C6B00246989 /* UIView+LayoutUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4D24B61E798BD300246989 /* UIView+LayoutUtils.swift */; };
-		5F4D24C31E798C7800246989 /* APSlidableTabPageController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F4D24B01E798BD300246989 /* APSlidableTabPageController.h */; };
+		5F4D24C31E798C7800246989 /* APSlidableTabPageController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F4D24B01E798BD300246989 /* APSlidableTabPageController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5F4D24C61E798D9000246989 /* APSlidableTabPageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F4D24C51E798D9000246989 /* APSlidableTabPageController.xib */; };
 		5F4D24C91E798DC200246989 /* APSlidableTabPageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F4D24C81E798DC200246989 /* APSlidableTabPageController.xib */; };
 		5F7770831E7BD1F0009A973B /* APIndexBarElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7770821E7BD1F0009A973B /* APIndexBarElementView.swift */; };
 		5F7770841E7BD1F0009A973B /* APIndexBarElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7770821E7BD1F0009A973B /* APIndexBarElementView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5FCB2D8D1E7C3AAD00190E06 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5FA8E4EE1C50F41400DCE0E5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5F4D24971E798A1200246989;
+			remoteInfo = APSlidableTabPageController_tvOS;
+		};
+		5FCB2D941E7C3E9400190E06 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5FA8E4EE1C50F41400DCE0E5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5FA8E4F61C50F41400DCE0E5;
+			remoteInfo = APSlidableTabPageController_iOS;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		5F378C7A1E79A429008CCE51 /* APSlidableTabPageController+tvOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "APSlidableTabPageController+tvOS.swift"; sourceTree = "<group>"; };
-		5F4D24981E798A1200246989 /* APSlidableTabPageController_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = APSlidableTabPageController_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F4D24981E798A1200246989 /* APSlidableTabPageController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = APSlidableTabPageController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F4D24B01E798BD300246989 /* APSlidableTabPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APSlidableTabPageController.h; sourceTree = "<group>"; };
 		5F4D24B21E798BD300246989 /* APSlidableTabPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APSlidableTabPageController.swift; sourceTree = "<group>"; };
 		5F4D24B51E798BD300246989 /* UIScrollView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Utils.swift"; sourceTree = "<group>"; };
@@ -33,7 +77,7 @@
 		5F4D24C51E798D9000246989 /* APSlidableTabPageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APSlidableTabPageController.xib; sourceTree = "<group>"; };
 		5F4D24C81E798DC200246989 /* APSlidableTabPageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APSlidableTabPageController.xib; sourceTree = "<group>"; };
 		5F7770821E7BD1F0009A973B /* APIndexBarElementView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIndexBarElementView.swift; sourceTree = "<group>"; };
-		5FA8E4F71C50F41400DCE0E5 /* APSlidableTabPageController_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = APSlidableTabPageController_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FA8E4F71C50F41400DCE0E5 /* APSlidableTabPageController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = APSlidableTabPageController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,8 +165,8 @@
 		5FA8E4F81C50F41400DCE0E5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5FA8E4F71C50F41400DCE0E5 /* APSlidableTabPageController_iOS.framework */,
-				5F4D24981E798A1200246989 /* APSlidableTabPageController_tvOS.framework */,
+				5FA8E4F71C50F41400DCE0E5 /* APSlidableTabPageController.framework */,
+				5F4D24981E798A1200246989 /* APSlidableTabPageController.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -164,7 +208,7 @@
 			);
 			name = APSlidableTabPageController_tvOS;
 			productName = "APSlidableTabPageController-tvOS";
-			productReference = 5F4D24981E798A1200246989 /* APSlidableTabPageController_tvOS.framework */;
+			productReference = 5F4D24981E798A1200246989 /* APSlidableTabPageController.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		5FA8E4F61C50F41400DCE0E5 /* APSlidableTabPageController_iOS */ = {
@@ -182,7 +226,7 @@
 			);
 			name = APSlidableTabPageController_iOS;
 			productName = APSlidableTabPageController;
-			productReference = 5FA8E4F71C50F41400DCE0E5 /* APSlidableTabPageController_iOS.framework */;
+			productReference = 5FA8E4F71C50F41400DCE0E5 /* APSlidableTabPageController.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -203,6 +247,14 @@
 						CreatedOnToolsVersion = 7.2;
 						ProvisioningStyle = Automatic;
 					};
+					5FCB2D891E7C3A9E00190E06 = {
+						CreatedOnToolsVersion = 8.3;
+						ProvisioningStyle = Automatic;
+					};
+					5FCB2D901E7C3E9000190E06 = {
+						CreatedOnToolsVersion = 8.3;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 5FA8E4F11C50F41400DCE0E5 /* Build configuration list for PBXProject "APSlidableTabPageController" */;
@@ -219,6 +271,8 @@
 			targets = (
 				5FA8E4F61C50F41400DCE0E5 /* APSlidableTabPageController_iOS */,
 				5F4D24971E798A1200246989 /* APSlidableTabPageController_tvOS */,
+				5FCB2D891E7C3A9E00190E06 /* APSlidableTabPageControllerFramework_tvOS */,
+				5FCB2D901E7C3E9000190E06 /* APSlidableTabPageControllerFramework_iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -241,6 +295,37 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5FCB2D8F1E7C3ADE00190E06 /* Build fat framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build fat framework";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PROJECT_DIR}/build-fat-framework.sh";
+		};
+		5FCB2D971E7C3EB400190E06 /* Build fat framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build fat framework";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PROJECT_DIR}/build-fat-framework.sh";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5F4D24931E798A1200246989 /* Sources */ = {
@@ -268,6 +353,19 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		5FCB2D8E1E7C3AAD00190E06 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5F4D24971E798A1200246989 /* APSlidableTabPageController_tvOS */;
+			targetProxy = 5FCB2D8D1E7C3AAD00190E06 /* PBXContainerItemProxy */;
+		};
+		5FCB2D951E7C3E9400190E06 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5FA8E4F61C50F41400DCE0E5 /* APSlidableTabPageController_iOS */;
+			targetProxy = 5FCB2D941E7C3E9400190E06 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
 		5F4D24A91E798A1200246989 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -285,7 +383,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.apegroup.APSlidableTabPageController;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = APSlidableTabPageController;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -311,7 +409,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.apegroup.APSlidableTabPageController;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = APSlidableTabPageController;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -426,7 +524,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.apegroup.APSlidableTabPageController;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = APSlidableTabPageController;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -447,11 +545,45 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.apegroup.APSlidableTabPageController;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = APSlidableTabPageController;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		5FCB2D8A1E7C3A9E00190E06 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
+				VALID_ARCHS = arm64;
+			};
+			name = Debug;
+		};
+		5FCB2D8B1E7C3A9E00190E06 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
+				VALID_ARCHS = arm64;
+			};
+			name = Release;
+		};
+		5FCB2D921E7C3E9000190E06 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5FCB2D931E7C3E9000190E06 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -484,6 +616,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		5FCB2D8C1E7C3A9E00190E06 /* Build configuration list for PBXAggregateTarget "APSlidableTabPageControllerFramework_tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5FCB2D8A1E7C3A9E00190E06 /* Debug */,
+				5FCB2D8B1E7C3A9E00190E06 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		5FCB2D911E7C3E9000190E06 /* Build configuration list for PBXAggregateTarget "APSlidableTabPageControllerFramework_iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5FCB2D921E7C3E9000190E06 /* Debug */,
+				5FCB2D931E7C3E9000190E06 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

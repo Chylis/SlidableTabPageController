@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5FA8E4F61C50F41400DCE0E5"
-               BuildableName = "APSlidableTabPageController.framework"
-               BlueprintName = "APSlidableTabPageController_iOS"
+               BlueprintIdentifier = "5FCB2D891E7C3A9E00190E06"
+               BuildableName = "APSlidableTabPageControllerFramework_tvOS"
+               BlueprintName = "APSlidableTabPageControllerFramework_tvOS"
                ReferencedContainer = "container:APSlidableTabPageController.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5FA8E4F61C50F41400DCE0E5"
-            BuildableName = "APSlidableTabPageController.framework"
-            BlueprintName = "APSlidableTabPageController_iOS"
+            BlueprintIdentifier = "5FCB2D891E7C3A9E00190E06"
+            BuildableName = "APSlidableTabPageControllerFramework_tvOS"
+            BlueprintName = "APSlidableTabPageControllerFramework_tvOS"
             ReferencedContainer = "container:APSlidableTabPageController.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5FA8E4F61C50F41400DCE0E5"
-            BuildableName = "APSlidableTabPageController.framework"
-            BlueprintName = "APSlidableTabPageController_iOS"
+            BlueprintIdentifier = "5FCB2D891E7C3A9E00190E06"
+            BuildableName = "APSlidableTabPageControllerFramework_tvOS"
+            BlueprintName = "APSlidableTabPageControllerFramework_tvOS"
             ReferencedContainer = "container:APSlidableTabPageController.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
