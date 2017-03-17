@@ -19,6 +19,12 @@ final class APIndexBarElementView: UIView {
             if let label = element as? UILabel {
                 label.textColor = defaultColor
             }
+            
+            #if os(tvOS)
+                if let imageView = element as? UIImageView {
+                    imageView.backgroundColor = defaultColor
+                }
+            #endif
         }
     }
     
@@ -37,8 +43,7 @@ final class APIndexBarElementView: UIView {
                 label.isHighlighted = isHighlighted
             } else if let imageView = subviews.first as? UIImageView {
                 imageView.isHighlighted = isHighlighted
-                imageView.tintColor = isHighlighted ?
-                    highlightedColor : defaultColor
+                imageView.tintColor = isHighlighted ? highlightedColor : defaultColor
             }
         }
     }
@@ -67,10 +72,13 @@ final class APIndexBarElementView: UIView {
         let imageView = UIImageView(image: image, highlightedImage: highlightedImage)
         imageView.contentMode = .center
         imageView.tintColor = tintColor
-        imageView.center(in: self)
+        imageView.center(in: self, horizontalMargin: 0, verticalMargin: 0)
         
         #if os(tvOS)
             imageView.adjustsImageWhenAncestorFocused = true
+            imageView.backgroundColor = tintColor
+            clipsToBounds = true
+            imageView.clipsToBounds = true
         #endif
     }
     

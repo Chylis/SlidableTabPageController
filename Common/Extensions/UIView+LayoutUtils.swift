@@ -34,13 +34,13 @@ extension UIView {
         prevView?.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
     }
     
-    func center(in parentView: UIView) {
+    func center(in parentView: UIView, horizontalMargin: CGFloat = 0, verticalMargin: CGFloat = 0) {
         parentView.addSubview(self)
         translatesAutoresizingMaskIntoConstraints = false
-        leadingAnchor.constraint(equalTo: parentView.leadingAnchor).isActive = true
-        trailingAnchor.constraint(equalTo: parentView.trailingAnchor).isActive = true
-        topAnchor.constraint(equalTo: parentView.topAnchor).isActive = true
-        bottomAnchor.constraint(equalTo: parentView.bottomAnchor).isActive = true
+        leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: horizontalMargin).isActive = true
+        trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: horizontalMargin).isActive = true
+        topAnchor.constraint(equalTo: parentView.topAnchor, constant: verticalMargin).isActive = true
+        bottomAnchor.constraint(equalTo: parentView.bottomAnchor, constant: verticalMargin).isActive = true
     }
     
     func reportAmbiguity () {
