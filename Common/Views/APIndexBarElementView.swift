@@ -64,7 +64,7 @@ final class APIndexBarElementView: UIView {
         label.textColor = color
         label.highlightedTextColor = highlightedColor
         label.textAlignment = .center
-        label.center(in: self)
+        label.ap_center(in: self)
     }
     
     convenience init(image: UIImage, highlightedImage: UIImage, tintColor: UIColor) {
@@ -72,7 +72,7 @@ final class APIndexBarElementView: UIView {
         let imageView = UIImageView(image: image, highlightedImage: highlightedImage)
         imageView.contentMode = .center
         imageView.tintColor = tintColor
-        imageView.center(in: self, horizontalMargin: 0, verticalMargin: 0)
+        imageView.ap_center(in: self, horizontalMargin: 0, verticalMargin: 0)
         
         #if os(tvOS)
             imageView.adjustsImageWhenAncestorFocused = true

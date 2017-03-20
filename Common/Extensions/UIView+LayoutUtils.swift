@@ -10,7 +10,7 @@ import UIKit
 
 extension UIView {
     
-    func addViewsHorizontally(_ views: [UIView]) {
+    func ap_addViewsHorizontally(_ views: [UIView]) {
         var prevView: UIView?
         for view in views {
             view.translatesAutoresizingMaskIntoConstraints = false
@@ -34,7 +34,7 @@ extension UIView {
         prevView?.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
     }
     
-    func center(in parentView: UIView, horizontalMargin: CGFloat = 0, verticalMargin: CGFloat = 0) {
+    func ap_center(in parentView: UIView, horizontalMargin: CGFloat = 0, verticalMargin: CGFloat = 0) {
         parentView.addSubview(self)
         translatesAutoresizingMaskIntoConstraints = false
         leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: horizontalMargin).isActive = true
@@ -43,25 +43,25 @@ extension UIView {
         bottomAnchor.constraint(equalTo: parentView.bottomAnchor, constant: verticalMargin).isActive = true
     }
     
-    func reportAmbiguity () {
+    func ap_reportAmbiguity () {
         for subview in subviews {
             if subview.hasAmbiguousLayout {
                 NSLog("Found ambigious layout: \(subview)")
             }
             
             if subview.subviews.count > 0 {
-                subview.reportAmbiguity()
+                subview.ap_reportAmbiguity()
             }
         }
     }
     
-    func listConstraints() {
+    func ap_listConstraints() {
         for subview in subviews {
             let arr1 = subview.constraintsAffectingLayout(for: .horizontal)
             let arr2 = subview.constraintsAffectingLayout(for: .vertical)
             NSLog("\n\n%@\nH: %@\nV:%@", subview, arr1, arr2)
             if subview.subviews.count > 0 {
-                subview.listConstraints()
+                subview.ap_listConstraints()
             }
         }
     }

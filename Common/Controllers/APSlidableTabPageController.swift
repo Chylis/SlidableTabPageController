@@ -150,7 +150,7 @@ public class APSlidableTabPageController: UIViewController, UIScrollViewDelegate
     
     override public func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         super.willTransition(to: newCollection, with: coordinator)
-        pageIndexBeforeTraitCollectionChange = contentScrollView.currentPage()
+        pageIndexBeforeTraitCollectionChange = contentScrollView.ap_currentPage()
     }
     
     override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -165,10 +165,10 @@ public class APSlidableTabPageController: UIViewController, UIScrollViewDelegate
                 self.scrollIndexIndicatorViewToVisible()
             }
             
-            self.contentScrollView.scrollToPageAtIndex(self.pageIndexBeforeTraitCollectionChange, animated: false)
+            self.contentScrollView.ap_scrollToPageAtIndex(self.pageIndexBeforeTraitCollectionChange, animated: false)
             
             //Update the indicator view position manually in case no scroll was performed
-            self.updateIndexIndicatorXPosition(percentage: self.contentScrollView.horizontalPercentScrolled())
+            self.updateIndexIndicatorXPosition(percentage: self.contentScrollView.ap_horizontalPercentScrolled())
             CATransaction.commit()
         }
     }
@@ -183,7 +183,7 @@ public class APSlidableTabPageController: UIViewController, UIScrollViewDelegate
         
         indexBarElements.forEach { $0.removeFromSuperview() }
         indexBarElements = createIndexBarElements()
-        indexBarContainerView.addViewsHorizontally(indexBarElements)
+        indexBarContainerView.ap_addViewsHorizontally(indexBarElements)
         
         //Make sure the indicator is not hidden behind the index bar elements
         indexBarContainerView.bringSubview(toFront: indexIndicatorView)
@@ -249,14 +249,14 @@ public class APSlidableTabPageController: UIViewController, UIScrollViewDelegate
             return page.contentViewController.view
         }
         
-        contentContainerView.addViewsHorizontally(vcViews)
+        contentContainerView.ap_addViewsHorizontally(vcViews)
         
         NSLayoutConstraint.activate(
             vcViews.map { vcView -> NSLayoutConstraint in
                 vcView.widthAnchor.constraint(equalTo: view.widthAnchor)
             })
         
-        contentScrollView.setHorizontalContentOffset(0)
+        contentScrollView.ap_setHorizontalContentOffset(0)
     }
     
     private func removeContentView() {
@@ -280,7 +280,7 @@ public class APSlidableTabPageController: UIViewController, UIScrollViewDelegate
         //Don't scroll the index bar while moving indicator view
         indexBarShouldTrackIndicatorView = false
         
-        contentScrollView.scrollToPageAtIndex(indexOfElementAtTouchPoint, animated: true)
+        contentScrollView.ap_scrollToPageAtIndex(indexOfElementAtTouchPoint, animated: true)
     }
     
     /**
@@ -293,18 +293,18 @@ public class APSlidableTabPageController: UIViewController, UIScrollViewDelegate
             
             //"percentScrolledInPage" represents the X-scroll percentage within the current page, starting at index 0.
             //E.g. if the scroll view is 50% between page 5 and 6, the  will be 4.5
-            let percentScrolledInPage = contentScrollView.horizontalPercentScrolledInCurrentPage()
-            let percentScrolledInTotal = contentScrollView.horizontalPercentScrolled()
+            let percentScrolledInPage = contentScrollView.ap_horizontalPercentScrolledInCurrentPage()
+            let percentScrolledInTotal = contentScrollView.ap_horizontalPercentScrolled()
             
-            let isGoingBackwards = contentScrollView.currentPage() < currentPageIndex
-            var transitionProgress = percentScrolledInPage - CGFloat(contentScrollView.currentPage())
+            let isGoingBackwards = contentScrollView.ap_currentPage() < currentPageIndex
+            var transitionProgress = percentScrolledInPage - CGFloat(contentScrollView.ap_currentPage())
             if isGoingBackwards {
                 //If we're moving left, normalise the progress so that it always starts from 0 --> 1
                 transitionProgress = (1 - transitionProgress)
             }
             
             //The index of the leftmost element involved in the transition
-            let transitionLeftElementIndex = contentScrollView.currentPage()
+            let transitionLeftElementIndex = contentScrollView.ap_currentPage()
             let transitionRightElementIndex = transitionLeftElementIndex + 1
             
             let transitionSourceElementIndex = isGoingBackwards ? transitionRightElementIndex : transitionLeftElementIndex
@@ -374,10 +374,10 @@ public class APSlidableTabPageController: UIViewController, UIScrollViewDelegate
         
         if shouldScrollRight {
             let newX = indexIndicatorView.frame.origin.x + indexIndicatorView.bounds.width - view.bounds.width
-            indexBarScrollView.setHorizontalContentOffset(newX)
+            indexBarScrollView.ap_setHorizontalContentOffset(newX)
         } else if shouldScrollLeft  {
             let newX = indexIndicatorView.frame.origin.x
-            indexBarScrollView.setHorizontalContentOffset(newX)
+            indexBarScrollView.ap_setHorizontalContentOffset(newX)
         }
     }
     
@@ -404,7 +404,7 @@ public class APSlidableTabPageController: UIViewController, UIScrollViewDelegate
             indexBarShouldTrackIndicatorView = true
             
             //Save the current page index
-            currentPageIndex = contentScrollView.currentPage()
+            currentPageIndex = contentScrollView.ap_currentPage()
         }
     }
     
@@ -420,7 +420,7 @@ public class APSlidableTabPageController: UIViewController, UIScrollViewDelegate
             indexBarShouldTrackIndicatorView = true
             
             //Save the current page index
-            currentPageIndex = contentScrollView.currentPage()
+            currentPageIndex = contentScrollView.ap_currentPage()
         }
     }
     

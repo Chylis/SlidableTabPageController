@@ -18,7 +18,7 @@ extension APSlidableTabPageController {
             let destinationPageIndex = indexBarElements.index(of: destinationView) else {
                 return
         }
-        contentScrollView.scrollToPageAtIndex(destinationPageIndex, animated: true)
+        contentScrollView.ap_scrollToPageAtIndex(destinationPageIndex, animated: true)
     }
 }
 
