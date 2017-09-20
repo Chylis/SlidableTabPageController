@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import APSlidableTabPageController_tvOS
+import APSlidableTabPageController
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

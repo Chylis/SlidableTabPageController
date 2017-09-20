@@ -3,7 +3,7 @@
 //  APSlidableTabPageController
 //
 //  Created by Magnus Eriksson on 21/01/16.
-//  Copyright © 2016 Apegroup. All rights reserved.
+//  Copyright © 2016. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
