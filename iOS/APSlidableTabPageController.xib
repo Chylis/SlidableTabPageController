@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,18 +22,23 @@
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9jE-hM-Bpa" userLabel="V Stack View">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UHd-qp-v9d" userLabel="Index Bar Scroll View">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vCg-dN-8gk" userLabel="Index Bar Container View">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CYt-QL-zZw" userLabel="Bot Separator View">
+                                                <rect key="frame" x="-0.5" y="43" width="601" height="1"/>
                                                 <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="opD-fa-eMY"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a5B-ZW-9cr" userLabel="Index Indicator View">
+                                                <rect key="frame" x="-25" y="39" width="50" height="5"/>
                                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" placeholder="YES" id="NqJ-wm-MNA" userLabel="PlaceHolderWidth"/>
@@ -62,8 +71,10 @@
                                 </connections>
                             </scrollView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FVo-2h-TkI" userLabel="Content Scroll View">
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z30-qp-on3" userLabel="Content Container View">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="623"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="600" placeholder="YES" id="tRd-Qm-dP9" userLabel="PlaceHolderWidth = 600"/>
@@ -86,10 +97,10 @@
                 </subviews>
                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="9jE-hM-Bpa" secondAttribute="bottom" id="Mbv-Qa-vuc"/>
                     <constraint firstAttribute="trailing" secondItem="9jE-hM-Bpa" secondAttribute="trailing" id="QQw-8f-kCp"/>
-                    <constraint firstItem="9jE-hM-Bpa" firstAttribute="top" secondItem="Ajb-Nk-yAT" secondAttribute="bottom" priority="999" id="TRd-mB-KDg"/>
                     <constraint firstItem="9jE-hM-Bpa" firstAttribute="leading" secondItem="sRh-uA-sXF" secondAttribute="leading" id="WBL-Bb-Cks"/>
-                    <constraint firstItem="DTf-eF-1Fl" firstAttribute="top" secondItem="9jE-hM-Bpa" secondAttribute="bottom" priority="999" id="d9E-U2-SZk"/>
+                    <constraint firstItem="9jE-hM-Bpa" firstAttribute="top" secondItem="sRh-uA-sXF" secondAttribute="top" id="f6S-Ke-Mf2"/>
                 </constraints>
             </view>
             <connections>
