@@ -89,8 +89,7 @@ public class APSlidableTabPageController: UIViewController, UIScrollViewDelegate
     //Decides whether the indexBar should scroll to follow the index indicator view.
     private var indexBarShouldTrackIndicatorView = true
     
-    //The current page before the trait collection changes, e.g. prior to rotation occurrs
-    private var pageIndexBeforeTraitCollectionChange: Int = 0
+    private var pageIndexBeforeRotation: Int = 0
     
     //Keeps track of the current page index in order to track scroll direction (i.e. if scrolling backwards or forwards)
     public private(set) var currentPageIndex: Int = 0 {
@@ -148,31 +147,20 @@ public class APSlidableTabPageController: UIViewController, UIScrollViewDelegate
     
     //MARK: Rotation related events
     
-    override public func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.willTransition(to: newCollection, with: coordinator)
-        pageIndexBeforeTraitCollectionChange = contentScrollView.ap_currentPage()
-    }
-    
-    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
+    override public func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        pageIndexBeforeRotation = contentScrollView.ap_currentPage()
         
-        //Restore previous page.
-        //A slight delay is required since the scroll view's frame size has not yet been updated to reflect the new trait collection.
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            CATransaction.begin()
-            CATransaction.setCompletionBlock {
-                //Scroll the index indicator view to visible only after the its position has been completely updated
-                self.scrollIndexIndicatorViewToVisible()
-            }
-            
-            self.contentScrollView.ap_scrollToPageAtIndex(self.pageIndexBeforeTraitCollectionChange, animated: false)
-            
+        coordinator.animate(alongsideTransition: { context in
+            self.contentScrollView.ap_scrollToPageAtIndex(self.pageIndexBeforeRotation, animated: false)
             //Update the indicator view position manually in case no scroll was performed
             self.updateIndexIndicatorXPosition(percentage: self.contentScrollView.ap_horizontalPercentScrolled())
-            CATransaction.commit()
-        }
+        }, completion: { _ in
+            //Scroll the index indicator view to visible only after the its position has been completely updated
+            self.scrollIndexIndicatorViewToVisible()
+        })
+        
+        super.viewWillTransition(to: size, with: coordinator)
     }
-    
     
     //MARK: Setup
     
