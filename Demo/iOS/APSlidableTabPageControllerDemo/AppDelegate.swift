@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let tabPageCtrl = APSlidableTabPageControllerFactory.make(pages: createPages(count: 7))
         tabPageCtrl.maxNumberOfIndexBarElementsPerScreen = 4.5
         tabPageCtrl.indexBarHeightConstraint.constant = 49

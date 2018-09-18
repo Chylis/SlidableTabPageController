@@ -174,7 +174,7 @@ public class APSlidableTabPageController: UIViewController, UIScrollViewDelegate
         indexBarContainerView.ap_addViewsHorizontally(indexBarElements)
         
         //Make sure the indicator is not hidden behind the index bar elements
-        indexBarContainerView.bringSubview(toFront: indexIndicatorView)
+        indexBarContainerView.bringSubviewToFront(indexIndicatorView)
         
         NSLayoutConstraint.activate(
             indexBarElements.map { element -> NSLayoutConstraint in
@@ -232,8 +232,8 @@ public class APSlidableTabPageController: UIViewController, UIScrollViewDelegate
     
     private func setupContentView() {
         let vcViews = pages.map { page -> UIView in
-            addChildViewController(page.contentViewController)
-            page.contentViewController.didMove(toParentViewController: self)
+            addChild(page.contentViewController)
+            page.contentViewController.didMove(toParent: self)
             return page.contentViewController.view
         }
         
@@ -249,9 +249,9 @@ public class APSlidableTabPageController: UIViewController, UIScrollViewDelegate
     
     private func removeContentView() {
         pages.forEach { page in
-            page.contentViewController.willMove(toParentViewController: nil)
+            page.contentViewController.willMove(toParent: nil)
             page.contentViewController.view.removeFromSuperview()
-            page.contentViewController.removeFromParentViewController()
+            page.contentViewController.removeFromParent()
         }
     }
     
