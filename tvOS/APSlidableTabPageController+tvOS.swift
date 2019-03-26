@@ -15,7 +15,7 @@ extension APSlidableTabPageController {
     //TODO: Consider alternative to extensions in a framework. 
     public override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
         guard let destinationView = context.nextFocusedView as? APIndexBarElementView,
-            let destinationPageIndex = indexBarElements.index(of: destinationView) else {
+            let destinationPageIndex = indexBarElements.firstIndex(of: destinationView) else {
                 return
         }
         contentScrollView.ap_scrollToPageAtIndex(destinationPageIndex, animated: true)
