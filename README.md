@@ -1,4 +1,4 @@
-# APSlidableTabPageController
+# SlidableTabPageController
 
 ## Description:
 - A slidable tab page controller written in Swift
@@ -18,14 +18,14 @@
 
 ## Usage example iOS:
 ```swift
-import APSlidableTabPageController_iOS
+import SlidableTabPageController
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    let tabPageCtrl = APSlidableTabPageControllerFactory.make(pages: createPages(count: 7))
+    let tabPageCtrl = SlidableTabPageControllerFactory.make(pages: createPages(count: 7))
     tabPageCtrl.maxNumberOfIndexBarElementsPerScreen = 4.5
     tabPageCtrl.indexBarHeightConstraint.constant = 49
     tabPageCtrl.indexBarElementColor = .black
@@ -39,21 +39,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     return true
   }
 
-  private func createPages(count: Int) -> [APSlidableTabPageControllerPage] {
-    return (0..<count).map { i -> APSlidableTabPageControllerPage in
+  private func createPages(count: Int) -> [SlidableTabPageControllerPage] {
+    return (0..<count).map { i -> SlidableTabPageControllerPage in
       let vc = UIViewController()
         vc.view.backgroundColor = UIColor(red: CGFloat(drand48()), green: CGFloat(drand48()), blue: CGFloat(drand48()), alpha: 1)
         vc.title = "\(i)"
 
-        let page: APSlidableTabPageControllerPage
+        let page: SlidableTabPageControllerPage
         if i == 0 {
-          let indexBarElement = APIndexBarElement.image(UIImage(named: "icon-star")!, UIImage(named: "iconplane")!)
-            page = APSlidableTabPageControllerPage(indexBarElement: indexBarElement, contentViewController: vc)
+          let indexBarElement = IndexBarElement.image(UIImage(named: "icon-star")!, UIImage(named: "iconplane")!)
+            page = SlidableTabPageControllerPage(indexBarElement: indexBarElement, contentViewController: vc)
         } else if i == 1 {
-          let indexBarElement = APIndexBarElement.title("hello there")
-            page = APSlidableTabPageControllerPage(indexBarElement: indexBarElement, contentViewController :vc)
+          let indexBarElement = IndexBarElement.title("hello there")
+            page = SlidableTabPageControllerPage(indexBarElement: indexBarElement, contentViewController :vc)
         } else {
-          page = APSlidableTabPageControllerPage(contentViewController: vc)        
+          page = SlidableTabPageControllerPage(contentViewController: vc)        
         }
 
       return page
@@ -61,8 +61,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 }
 
-extension AppDelegate: APSlidableTabPageControllerDelegate {
-  func slidableTabPageController(_ slidableTabPageController: APSlidableTabPageController, didNavigateFrom oldPage: Int, to newPage: Int) {
+extension AppDelegate: SlidableTabPageControllerDelegate {
+  func slidableTabPageController(_ slidableTabPageController: SlidableTabPageController, didNavigateFrom oldPage: Int, to newPage: Int) {
     print("Page changed from '\(oldPage)' to  \(newPage)")
   }
 }
@@ -70,7 +70,6 @@ extension AppDelegate: APSlidableTabPageControllerDelegate {
 ```
 
 ## Restrictions:
-- Must be instantiated from a NIB
 
 ## Known Issues:
 
