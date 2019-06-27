@@ -1,2 +1,0 @@
-Prefix all category/extension methods with unique prefix to this framework
-Refactor SegmentScrollView/IndexScrollView into own class
